@@ -2,6 +2,10 @@
 
 ##  --> This file content all the steps to complete the PID Project <--
 
+[//]: # (Video References)
+
+[Video1]: ./PID.mov "Small Video"
+
 ## Development Environment:
 * MacBook Pro - 2,7 Ghz i7 - High Sierra
 * Xcode 
@@ -27,6 +31,7 @@ was tuned Kd until the oscilation was acceptable , and then Ki, until the error 
 ## 3. Small Video
 
 In this video we can check the car behavior after the PID controller was tuned.
+![alt text][Video1]
 
 
 
