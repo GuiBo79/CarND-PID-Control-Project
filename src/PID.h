@@ -18,7 +18,6 @@ public:
   double p_error;
   double i_error;
   double d_error;
-  double prev_cte;
   double total_error = 0;
   
     
@@ -56,7 +55,7 @@ public:
   /*
   * Calculate the total PID error.
   */
-  double TotalError(double cte, double i);
+  double TotalError();
 };
 
 #endif /* PID_H */

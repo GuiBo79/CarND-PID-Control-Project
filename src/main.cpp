@@ -13,7 +13,7 @@ using namespace std;
 constexpr double pi() { return M_PI; }
 double deg2rad(double x) { return x * pi() / 180; }
 double rad2deg(double x) { return x * 180 / pi(); }
-int i = 1;
+
 
 // Checks if the SocketIO event has JSON data.
 // If there is data the JSON object in string format will be returned,
@@ -36,10 +36,8 @@ int main()
   uWS::Hub h;
 
   PID pid;
-  pid.Init(0.075,0.00015,0.7);
-  pid.prev_cte = 0;
+  pid.Init(0.125,0.00018,0.80);
   
-    
     
   // TODO: Initialize the pid variable.
     
@@ -70,21 +68,16 @@ int main()
           */
             
           pid.UpdateError(cte);
-          pid.prev_cte = cte;
-          steer_value = -pid.Kp*pid.p_error - pid.Kd*pid.d_error -pid.Ki*pid.i_error;
-          throttle_value = 0.20;
+          steer_value = pid.TotalError();
+          throttle_value = 0.15;
             
-          pid.TotalError(cte,i);
-            
-            
-          ++i;
             
           // DEBUG
           std::cout << "CTE: " << cte << " Steering Value: " << steer_value << std::endl;
           std::cout << "Speed: " << speed << std::endl;
           std::cout << "P: " << pid.Kp << "  I: " << pid.Ki << "  D: " << pid.Kd << std::endl;
           std::cout << "P Error: " << pid.p_error << " I error: " << pid.i_error << " D error: " << pid.d_error << std::endl;
-          std::cout << "Total Error: " << pid.total_error/i << std::endl;
+          
             
             
 
